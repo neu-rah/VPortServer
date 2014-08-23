@@ -4,7 +4,7 @@
 
 void vpsRun();
 
-class CSStatus {
+/*class CSStatus {
   public://store csPins
   static uint8_t mask[nports];
   uint8_t status[nports];
@@ -12,7 +12,7 @@ class CSStatus {
   void backupCS();
   void restoreCS();
   void begin();
-};
+};*/
 
 class VPortServer {
 protected:
