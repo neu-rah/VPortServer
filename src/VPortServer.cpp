@@ -13,7 +13,8 @@ Serving local (real and virtual) ports to I2C network
 //operation mode uses only 3 of 4 states
 //number of ports now 64, we can limit it to 32 and have an extra bit
 
-void vpsRun() {
+//void vpsRun() {
+void rcv(int numBytes) {
 	char port=Wire.read();
 	char op=port&0b11;//OPeration can be setmode|output|input (00|01|10)
 	port>>=2;
@@ -29,9 +30,9 @@ void vpsRun() {
 	}
 }
 
-void shared_rcv(int numBytes) {}
+//void shared_rcv(int numBytes) {}
 
-void rcv(int numBytes) {vpsRun();}
+//void rcv(int numBytes) {vpsRun();}
 
 void req() {
 	vpins_in(vpserver_active_port);
@@ -40,10 +41,11 @@ void req() {
 
 VPortServer::VPortServer(TwoWire & wire):Wire(wire) {}
 
-void VPortServer::begin(uint8_t serverId,bool shared) {
-	Serial.print("VPort server");
-	Serial.println(shared?" shared mode":"");
-	Wire.onReceive(shared?shared_rcv:rcv);
+void VPortServer::begin(uint8_t serverId) {//,bool shared=false) {
+	//Serial.print("VPort server");
+	//Serial.println(shared?" shared mode":"");
+	//Wire.onReceive(shared?shared_rcv:rcv);
+	Wire.onReceive(rcv);
 	Wire.onRequest(req);
 	Wire.begin(serverId);
 }

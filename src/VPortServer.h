@@ -19,6 +19,6 @@ protected:
 	TwoWire &Wire;
 public:
 	VPortServer(TwoWire & wire);
-	void begin(uint8_t serverID,bool shared=false);
+	void begin(uint8_t serverID);//,bool shared=false);
 };
 
