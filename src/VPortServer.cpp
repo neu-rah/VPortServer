@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "../Wire/Wire.h"
+#include <Wire.h>
 #include "VPortServer.h"
 
 char vpserver_active_port=-1;
@@ -61,5 +61,3 @@ void VPortServer::begin(uint8_t serverId) {//,bool shared=false) {
 }*/
 
 //_VPortServer VPortServer();
-
-
